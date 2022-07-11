@@ -70,7 +70,8 @@
                                                     v-if="
                                                         $page.props.auth.user
                                                             .id ===
-                                                        topic.user.id
+                                                            topic.user.id ||
+                                                        permissions.posts_manage
                                                     "
                                                     :href="`/topics/${topic.id}/edit`"
                                                     class="text-indigo-600 hover:text-indigo-900"
@@ -79,9 +80,7 @@
                                                 </Link>
                                                 <Link
                                                     v-if="
-                                                        $page.props.auth.user
-                                                            .id ===
-                                                        topic.user.id
+                                                        permissions.posts_manage
                                                     "
                                                     :href="`/topics/${topic.id}`"
                                                     method="delete"
@@ -106,10 +105,10 @@
 
 <script setup>
 import BreezeAuthenticatedLayout from "@/Layouts/Authenticated.vue";
-import { Head, Link } from "@inertiajs/inertia-vue3";
 
 const props = defineProps({
     topics: Array,
+    permissions: Object,
 });
 </script>
 

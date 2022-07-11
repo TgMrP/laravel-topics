@@ -47,4 +47,13 @@ class User extends Authenticatable
     {
         return $this->hasMany(Topic::class);
     }
+
+    public function getPermissionsAttribute()
+    {
+        return [
+            'posts_view' => true,
+            'posts_create' => true,
+            'posts_manage' => $this->id === 1,
+        ];
+    }
 }

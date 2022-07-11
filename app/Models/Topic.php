@@ -10,14 +10,14 @@ class Topic extends Model
     use HasFactory;
     protected $fillable = ['name','image'];
 
-    public static function boot()
-    {
-        parent::boot();
+    // public static function boot()
+    // {
+    //     parent::boot();
 
-        static::creating(function ($post) {
-            $post->user_id = auth()->user()->id;
-        });
-    }
+    //     static::creating(function ($post) {
+    //         $post->user_id = auth()->user()->id;
+    //     });
+    // }
 
     public function user()
     {
