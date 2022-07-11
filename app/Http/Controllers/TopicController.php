@@ -37,7 +37,6 @@ class TopicController extends Controller
 
     public function store(StoreTopicRequest $request)
     {
-        sleep(10);
         $image = $request->file('image')->store('topics', 'public');
         Topic::create([
             'name' => $request->input('name'),
@@ -63,8 +62,8 @@ class TopicController extends Controller
         abort_if($topic->user_id !== auth()->id(), 403);
 
         $image = $topic->image;
-        if($request->file('image')) {
-            Storage::delete('public/'.$image);
+        if ($request->file('image')) {
+            Storage::delete('public/' . $image);
             $image = $request->file('image')->store('topics', 'public');
         }
 
@@ -80,12 +79,9 @@ class TopicController extends Controller
     {
         abort_if($topic->user_id !== auth()->id(), 403);
 
-        Storage::delete('public/'.$topic->image);
+        Storage::delete('public/' . $topic->image);
         $topic->delete();
 
         return Redirect::route('topics.index');
     }
-
-
 }
-
