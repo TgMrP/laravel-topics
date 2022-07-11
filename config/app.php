@@ -195,6 +195,11 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /**
+         * Ran Add
+         */
+        // Barryvdh\Debugbar\ServiceProvider::class,
+
     ],
 
     /*
